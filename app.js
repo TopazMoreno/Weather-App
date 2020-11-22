@@ -66,11 +66,33 @@ function search(event) {
     let temperature = Math.round(response.data.main.temp);
     let description = response.data.weather[0].description;
     weatherElement.innerHTML = `It is ${temperature} degrees, ${description}, in ${response.data.name}`;
+    let iconElement = document.querySelector("#icon");
+    let humidityElement = document.querySelector ("#humidity");
+    let windElement = document.querySelector ("#wind");
+    humidityElement.innerHTML = response.data.humidity;
+    windElement.innerHTML = response.data.wind.speed;
   }
+{
+    let form = document.querySelector("#search-form");
+    form.addEventListener("submit", search);
+    function showWeather(response) {
+    console.log(response.data);
+    let weatherElement = document.querySelector("h4");
+    let temperature = Math.round(response.data.main.temp);
+    let description = response.data.weather[0].description;
+    weatherElement.innerHTML = `It is ${temperature} degrees, ${description}, in ${response.data.name}`;
+    iconElement.innerHTML = `"http://openweathermap.org/img/wn/10d@2x.png"`;
+}
+}
 
+function showPosition (position) {
+    console.log (position);
+    console.log (position.coords.latitude);
+    console.log (position.coords.longitude);
 
+}
 
-
+navigator.geolocation.getCurrentPosition (showPosition);
 
 
 
