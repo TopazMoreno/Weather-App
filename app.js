@@ -60,29 +60,20 @@ function search(event) {
   }
   let form = document.querySelector("#search-form");
   form.addEventListener("submit", search);
+  
   function showWeather(response) {
     console.log(response.data);
     let weatherElement = document.querySelector("h1");
     let temperature = Math.round(response.data.main.temp);
     let description = response.data.weather[0].description;
-    weatherElement.innerHTML = `It is ${temperature} degrees, ${description}, in ${response.data.name}`;
+    weatherElement.innerHTML = `It is ${temperature}degrees, ${description}, in ${response.data.name}`;
     let iconElement = document.querySelector("#icon");
     let humidityElement = document.querySelector ("#humidity");
     let windElement = document.querySelector ("#wind");
-    humidityElement.innerHTML = response.data.humidity;
+    humidityElement.innerHTML = response.data.main.humidity;
     windElement.innerHTML = response.data.wind.speed;
-  }
-{
-    let form = document.querySelector("#search-form");
-    form.addEventListener("submit", search);
-    function showWeather(response) {
-    console.log(response.data);
-    let weatherElement = document.querySelector("h4");
-    let temperature = Math.round(response.data.main.temp);
-    let description = response.data.weather[0].description;
-    weatherElement.innerHTML = `It is ${temperature} degrees, ${description}, in ${response.data.name}`;
-    iconElement.innerHTML = `"http://openweathermap.org/img/wn/10d@2x.png"`;
-}
+    iconElement.innerHTML = 
+        `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`;
 }
 
 function showPosition (position) {
