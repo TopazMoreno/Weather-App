@@ -63,10 +63,13 @@ function search(event) {
   
   function showWeather(response) {
     console.log(response.data);
+    let descriptionElement = document.querySelector ("#description");
+    let temperatureElement = document.querySelector ("#temperature");
     let weatherElement = document.querySelector("h3");
     let temperature = Math.round(response.data.main.temp);
     let description = response.data.weather[0].description;
-    weatherElement.innerHTML = `${temperature}°, ${description}, in ${response.data.name}`;
+    temperatureElement.innerHTML = temperature;
+    descriptionElement.innerHTML = description;
     let iconElement = document.querySelector("#icon");
     let humidityElement = document.querySelector ("#humidity");
     let windElement = document.querySelector ("#wind");
@@ -75,9 +78,9 @@ function search(event) {
     iconElement.innerHTML = (
         "src",
         `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
-}
-celciusTemperature = response.data.main.temp;
 
+celciusTemperature = response.data.main.temp;
+    }
 function showPosition (position) {
     console.log (position);
     console.log (position.coords.latitude);
