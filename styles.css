@@ -3,11 +3,20 @@ body, h1{
     font-family: 'Syne', sans-serif;
 }
 h2, h3{
-    font-size: smaller;
+    font-size: 18 px;
 }
+
 .conditions{
     float: right;
     line-height: 40px;
     padding-left: 5px;
     padding-top: 10px ;
 }
+
+.weather-temperature .active{
+    color: black;
+    cursor: default;
+    }
+    .weather-temperature .active:hover{
+        text-decoration: none;
+ }
