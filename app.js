@@ -51,7 +51,7 @@ console.log(formatDate(currentTime));
 function search(event) {
     event.preventDefault();
     let citySearch = document.querySelector("#search-text-input");
-    let cityHeading = document.querySelector("h1");
+    let cityHeading = document.querySelector("h1,h3");
     cityHeading.innerHTML = citySearch.value;
     let apikey = "62ab349fdee116c5aab9ac5a6c835eb5";
     let apiUrl =
@@ -63,10 +63,10 @@ function search(event) {
   
   function showWeather(response) {
     console.log(response.data);
-    let weatherElement = document.querySelector("h1");
+    let weatherElement = document.querySelector("h3");
     let temperature = Math.round(response.data.main.temp);
     let description = response.data.weather[0].description;
-    weatherElement.innerHTML = `It is ${temperature}°, ${description}, in ${response.data.name}`;
+    weatherElement.innerHTML = `${temperature}°, ${description}, in ${response.data.name}`;
     let iconElement = document.querySelector("#icon");
     let humidityElement = document.querySelector ("#humidity");
     let windElement = document.querySelector ("#wind");
@@ -107,17 +107,3 @@ fahrenheitlink.addEventListener ("click", displayFahrenheitTemperature);
 
 let celciuslink = document.querySelector ("#celcius-link");
 celciuslink.addEventListener ("click", displayCelciusTemperature);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
